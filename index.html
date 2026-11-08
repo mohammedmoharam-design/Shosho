@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+
+<title>For SHOSHO ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: white;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    font-family: Georgia, serif;
+}
+
+.container {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 15px;
+}
+
+.title {
+    color: #ff8dbb;
+    font-size: 17px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 15px #ff2878;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+.heart-wrapper {
+    width: min(95vw, 650px);
+    position: relative;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    display: block;
+}
+
+/* HEART OUTLINE */
+
+.heart-outline {
+    fill: none;
+    stroke: #ff4b91;
+    stroke-width: 3;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    filter:
+        drop-shadow(0 0 5px #ff2878)
+        drop-shadow(0 0 15px #ff2878);
+    animation: drawHeart 4s ease forwards;
+}
+
+@keyframes drawHeart {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* LOVE WORDS */
+
+.love-words {
+    opacity: .12;
+    filter: drop-shadow(0 0 2px #ff559b);
+    animation: wordsLight 4s ease forwards;
+    animation-delay: 3.5s;
+}
+
+@keyframes wordsLight {
+    0% {
+        opacity: .12;
+        filter: drop-shadow(0 0 2px #ff559b);
+    }
+
+    30% {
+        opacity: .4;
+    }
+
+    55% {
+        opacity: .2;
+    }
+
+    75% {
+        opacity: .8;
+    }
+
+    100% {
+        opacity: 1;
+        filter:
+            drop-shadow(0 0 5px #ff559b)
+            drop-shadow(0 0 12px #ff2878);
+    }
+}
+
+/* CENTER NAME */
+
+.center-name {
+    opacity: 0;
+    fill: #fff0f7;
+    font-size: 55px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    filter:
+        drop-shadow(0 0 5px #ff8ab9)
+        drop-shadow(0 0 15px #ff2878);
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.show-name {
+    animation: nameGlow 2.5s ease forwards;
+    animation-delay: 7.5s;
+}
+
+@keyframes nameGlow {
+    0% {
+        opacity: 0;
+        transform: scale(.4);
+        filter: drop-shadow(0 0 0 transparent);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter:
+            drop-shadow(0 0 8px #fff)
+            drop-shadow(0 0 20px #ff2878)
+            drop-shadow(0 0 40px #ff2878);
+    }
+}
+
+/* FINAL MESSAGE */
+
+.footer {
+    opacity: 0;
+    margin-top: -5px;
+    color: #ffb3d0;
+    font-size: clamp(14px, 3.5vw, 19px);
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px #ff2878;
+    text-align: center;
+    animation: fadeIn 2s forwards;
+    animation-delay: 9s;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* FALLING ROSES */
+
+#effects {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.rose {
+    position: absolute;
+    top: -50px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(600deg);
+        opacity: 0;
+    }
+}
+
+/* FLOATING HEARTS */
+
+.particle {
+    position: absolute;
+    bottom: -30px;
+    color: #ff4b91;
+    text-shadow: 0 0 12px #ff2878;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) scale(1.6);
+        opacity: 0;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width: 450px) {
+    .title {
+        font-size: 13px;
+        letter-spacing: 3px;
+    }
+
+    .center-name {
+        font-size: 42px;
+        letter-spacing: 3px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    .rose, .particle {
+        animation-duration: 12s;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="effects"></div>
+
+<div class="container">
+
+    <div class="title">
+        A LITTLE SURPRISE FOR YOU ❤️
+    </div>
+
+    <div class="heart-wrapper">
+
+        <svg viewBox="0 0 500 500"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+
+                <!-- HEART SHAPE -->
+
+                <path id="heartShape"
+                d="
+                M250 455
+                C215 405 40 290 40 155
+                C40 25 190 5 250 115
+                C310 5 460 25 460 155
+                C460 290 285 405 250 455 Z
+                "/>
+
+                <!-- CLIP WORDS INSIDE HEART -->
+
+                <clipPath id="heartClip">
+                    <use href="#heartShape"/>
+                </clipPath>
+
+                <!-- LOVE PATTERN -->
+
+                <pattern id="lovePattern"
+                         width="240"
+                         height="65"
+                         patternUnits="userSpaceOnUse">
+
+                    <text x="0" y="18"
+                          font-size="17"
+                          font-weight="bold"
+                          fill="#ff80b4">
+                        I LOVE YOU ♥ TE AMO
+                    </text>
+
+                    <text x="10" y="40"
+                          font-size="16"
+                          font-weight="bold"
+                          fill="#ffc0d9">
+                        JE T'AIME ♥ TI AMO
+                    </text>
+
+                    <text x="0" y="60"
+                          font-size="14"
+                          font-weight="bold"
+                          fill="#ff80b4">
+                        ICH LIEBE DICH ♥
+                    </text>
+
+                </pattern>
+
+            </defs>
+
+            <!-- WORDS INSIDE HEART -->
+
+            <g clip-path="url(#heartClip)">
+
+                <rect x="0" y="0"
+                      width="500"
+                      height="500"
+                      fill="url(#lovePattern)"
+                      class="love-words"/>
+
+            </g>
+
+            <!-- HEART BORDER -->
+
+            <use href="#heartShape"
+                 class="heart-outline"/>
+
+            <!-- CENTER NAME -->
+
+            <text x="250" y="255"
+                  class="center-name show-name">
+                SHOSHO
+            </text>
+
+        </svg>
+
+    </div>
+
+    <div class="footer">
+        You are my favorite person ❤️
+    </div>
+
+</div>
+
+
+<script>
+
+/* FALLING ROSES */
+
+const effects = document.getElementById("effects");
+
+function createRose() {
+
+    const rose = document.createElement("div");
+
+    rose.className = "rose";
+
+    const flowers = ["🌹", "🌸", "🌺", "💗"];
+
+    rose.textContent =
+        flowers[Math.floor(Math.random() * flowers.length)];
+
+    rose.style.left = Math.random() * 100 + "vw";
+
+    rose.style.fontSize =
+        (15 + Math.random() * 20) + "px";
+
+    const duration = 5 + Math.random() * 5;
+
+    rose.style.animationDuration = duration + "s";
+
+    effects.appendChild(rose);
+
+    setTimeout(() => rose.remove(), duration * 1000);
+}
+
+setInterval(createRose, 400);
+
+
+/* FLOATING HEART PARTICLES */
+
+function createParticle() {
+
+    const particle = document.createElement("div");
+
+    particle.className = "particle";
+
+    particle.textContent = "♥";
+
+    particle.style.left = Math.random() * 100 + "vw";
+
+    particle.style.fontSize =
+        (10 + Math.random() * 20) + "px";
+
+    const duration = 5 + Math.random() * 5;
+
+    particle.style.animationDuration = duration + "s";
+
+    effects.appendChild(particle);
+
+    setTimeout(() => particle.remove(), duration * 1000);
+}
+
+setInterval(createParticle, 650);
+
+</script>
+
+</body>
+</html>
